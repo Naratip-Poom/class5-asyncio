@@ -7,12 +7,14 @@
 import asyncio
 import time
 
-#เป้นฟังก์ชั่นที่ทำหน้าที่แสดงผลลัพธ์แรกเป็น Hello (จำนวนครั้ง) Started จำนวน 10 ครั้ง และรอ 4 วินาที่ตากนั้น Hello (จำนวนครั้ง) done 10 ครั้ง
+#เป็นฟังก์ชั่นที่ทำหน้าที่แสดงผลลัพธ์เป็น วัน เดือน ปี และเวลา และแสดงผล Hello (จำนวนครั้ง) Started และรอ 4 วินาที่จากนันแสดงผล Hello (จำนวนครั้ง) done 
+
 async def hello(i):
     print(f"{time.ctime()} hello {i} started")
     await asyncio.sleep(4)
     print(f"{time.ctime()} hello {i} done")
-
+# สร้างฟังก์ชั่น main 
+# สร้าง task 1, task2 ให้ทำงานพร้อมกัน โดยใช้ syncio.gather จะได้ไม่ต้องใช้หลายบรรทัด
 async def main():
     task1 = asyncio.create_task(hello(1)) #return immediately, the task is created
     #await asyncio.sleep(3)

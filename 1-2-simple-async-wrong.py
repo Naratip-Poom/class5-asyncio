@@ -23,7 +23,9 @@ async def sleep():
     time.sleep(1)
 
 async def sum(name, numbers):
+    # สร้างตัวแปรมาเก็บค่า คือ total
     total = 0 #เริ่มต้นผลบวกที่ค่าสูง
+    # ทำการบวกเลข เก็บในตัวแปร total โดยวนลูปจาก ตัวแปร numbers 
     for number in numbers:
         print(f'Task {name}: Computing {total}+{number}')
         await sleep()
@@ -31,13 +33,13 @@ async def sum(name, numbers):
     print(f'Task {name}: Sum = {total}\n')
 
 start = time.time()
- 
+ # asyncio สร้างฟังก์ชั่นมาเก็บค่า และสร้าง task ขึ้นมา แต่ยังไม่ให้รัน 
 loop = asyncio.get_event_loop()
 tasks = [
     loop.create_task(sum("A", [1, 2])),
     loop.create_task(sum("B", [1,2,3])),
 ]
-
+# ทำการรัน task และทำจนเสร็จ
 loop.run_until_complete(asyncio.wait(tasks))
 loop.close
 

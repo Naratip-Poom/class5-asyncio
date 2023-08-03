@@ -23,7 +23,7 @@
 import asyncio
 import time
 
-#เป็นฟังก์ชั่นที่ทำหน้าที่แสดงผลลัพธ์แรกเป็น Hello (จำนวนครั้ง) Started จำนวน 10 ครั้ง และรอ 4 วินาที่ตากนั้น Hello (จำนวนครั้ง) done 10 ครั้ง
+#เป็นฟังก์ชั่นที่ทำหน้าที่แสดงผลลัพธ์เป็น วัน เดือน ปี และเวลา และแสดงผล Hello (จำนวนครั้ง) Started จำนวน 10 ครั้ง และรอ 4 วินาที่ตากนั้น Hello (จำนวนครั้ง) done 10 ครั้ง
 async def hello(i):
     print(f"{time.ctime()} hello {i} started") #ครั้งแรก
     await asyncio.sleep(4) #รอ 4 วินาที
@@ -31,6 +31,7 @@ async def hello(i):
 
 #ฟังกชั่นที่เริ่มรันครั้งแรกของการทำงานโปรแกรม
 async def main():
+    #สร้างตัวแปรให้วนค่า hello 0-9 และะให้เริ่มทำงานพร้อมกัน
     coros = [hello(i) for i in range(10)] #สร้างตัวแปรและวนลูปฟังกชั่นhello ทั้งหมด 10 ครั้ง
     await asyncio.gather(*coros)
 

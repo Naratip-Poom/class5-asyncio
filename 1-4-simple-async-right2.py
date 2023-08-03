@@ -13,7 +13,7 @@
 # Task B: Sum = 6
 
 # Time: 3.03 sec
-
+#โค้ดนี้เป็นการทำงานแบบอะซิงโครนัสซึ่งเป็นดารทำงานพร้อมกันทั้งหมดทำให้ความเร็วในการรันโปรแกรมเร็วขึ้น
 import asyncio
 import time
 
@@ -21,13 +21,16 @@ async def sleep():
     print(f'Time: {time.time() - start:.2f}')
     await asyncio.sleep(1)
 
+#ฟังก์ชั่นที่ใช้ในการบวกค่าตัวเลขตามลำดับ
 async def sum(name, numbers):
-    total = 0 #เริ่มต้นผลบวกที่ค่าสูง
+    # สร้างตัวแปรมาเก็บค่า คือ total
+    total = 0 #เริ่มต้นผลบวกที่ค่า 0
     for number in numbers:
         print(f'Task {name}: Computing {total}+{number}')
-        await sleep()
+        await sleep()#ดีเลย์1วินาที
         total += number
     print(f'Task {name}: Sum = {total}\n')
+#ัสร้างฟังก์ชั่นอะซิงโครนัสที่เก็บขอมูลเป็น List โดยใช้ asyncio.gather
 async def main():
     await asyncio.gather(sum("A",[1,2]), sum("B",[1,2,3]))
 

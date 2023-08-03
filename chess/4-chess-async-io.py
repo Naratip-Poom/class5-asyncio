@@ -3,7 +3,7 @@ import time
 
 my_compute_time = 5
 opponent_compute_time = 55
-opponents = 24
+opponents = 1
 move_pairs = 30
 
 
